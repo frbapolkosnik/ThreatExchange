@@ -1,7 +1,9 @@
+from __future__ import absolute_import
+from builtins import str
 import os
 
-from errors import pytxAccessTokenError
-from vocabulary import ThreatExchange as te
+from .errors import pytxAccessTokenError
+from .vocabulary import ThreatExchange as te
 
 
 __ACCESS_TOKEN = None

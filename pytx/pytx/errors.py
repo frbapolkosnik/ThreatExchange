@@ -1,4 +1,5 @@
-from logger import log_message
+from __future__ import absolute_import
+from .logger import log_message
 
 
 class pytxException(Exception):

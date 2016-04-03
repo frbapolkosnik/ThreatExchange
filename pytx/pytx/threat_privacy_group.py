@@ -1,9 +1,10 @@
-from access_token import get_app_id
-from common import Common
-from request import Broker
-from vocabulary import ThreatPrivacyGroup as tpg
-from vocabulary import ThreatExchange as t
-from errors import pytxValueError
+from __future__ import absolute_import
+from .access_token import get_app_id
+from .common import Common
+from .request import Broker
+from .vocabulary import ThreatPrivacyGroup as tpg
+from .vocabulary import ThreatExchange as t
+from .errors import pytxValueError
 
 
 class ThreatPrivacyGroup(Common):

@@ -1,11 +1,13 @@
+from __future__ import absolute_import
+from builtins import object
 import json
 
-from access_token import get_access_token
-from request import Broker
+from .access_token import get_access_token
+from .request import Broker
 
-from vocabulary import Batch as b
-from vocabulary import ThreatExchange as t
-from errors import (
+from .vocabulary import Batch as b
+from .vocabulary import ThreatExchange as t
+from .errors import (
     pytxFetchError
 )
 
@@ -113,7 +115,7 @@ class Batch(object):
 
         for arg in args:
             batch.append(Batch.prepare_single_request(arg))
-        for key, value in kwargs.iteritems():
+        for key, value in kwargs.items():
             batch.append(Batch.prepare_single_request(value, name=key))
         params = {t.ACCESS_TOKEN: get_access_token(),
                   t.BATCH: json.dumps(batch),

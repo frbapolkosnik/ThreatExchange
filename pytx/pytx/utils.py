@@ -1,3 +1,5 @@
+from builtins import range
+from past.builtins import basestring
 import dateutil.parser
 import datetime
 
@@ -34,7 +36,7 @@ def get_data_field(field, result):
             field_value = result.get(field[0])
             for i in range(1, len(field)):
                 field_value = (field_value.get(field[i])
-                    if field[i] in field_value.keys() else "")
+                    if field[i] in list(field_value.keys()) else "")
 
         field_value = (field_value if type(field_value) == int
             else (field_value.encode('utf-8') if field_value else ""))

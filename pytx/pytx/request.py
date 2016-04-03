@@ -1,18 +1,22 @@
+from __future__ import absolute_import
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
 import json
 import requests
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 from requests.packages.urllib3.util import Retry
 
-from access_token import get_access_token
-from connection import get_headers, get_proxies, get_verify
-from logger import do_log, log_message
+from .access_token import get_access_token
+from .connection import get_headers, get_proxies, get_verify
+from .logger import do_log, log_message
 
-from vocabulary import ThreatExchange as t
-from vocabulary import Paging as p
-from vocabulary import PagingCursor as pc
-from vocabulary import Response as R
-from errors import (
+from .vocabulary import ThreatExchange as t
+from .vocabulary import Paging as p
+from .vocabulary import PagingCursor as pc
+from .vocabulary import Response as R
+from .errors import (
     pytxFetchError,
     pytxValueError
 )
@@ -79,7 +83,7 @@ class Broker(object):
 
         try:
             int(limit)
-        except ValueError, e:
+        except ValueError as e:
             raise pytxValueError(e)
         return
 
@@ -294,7 +298,7 @@ class Broker(object):
         prep = request.prepare()
         full_url = prep.url
         if body:
-            body = urllib.urlencode(body)
+            body = urllib.parse.urlencode(body)
         return {'type': type_,
                 'url': full_url,
                 'body': body}
@@ -505,7 +509,7 @@ class Broker(object):
                                                                     count
                                                                     )
                     )
-                except Exception, e:
+                except Exception as e:
                     log_message('Missing key in response: %s' % e)
             for data in results[t.DATA]:
                 if to_dict:

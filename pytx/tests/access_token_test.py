@@ -1,3 +1,4 @@
+from builtins import object
 from contextlib import nested
 from mock import patch
 import pytest
@@ -7,7 +8,7 @@ from pytx.errors import pytxAccessTokenError
 from pytx.vocabulary import ThreatExchange as te
 
 
-class TestAccessToken:
+class TestAccessToken(object):
 
     def verify_token(self, expected_token):
         assert expected_token == access_token.get_access_token()

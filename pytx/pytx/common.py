@@ -1,12 +1,15 @@
-from request import Broker
+from __future__ import absolute_import
+from past.builtins import basestring
+from builtins import object
+from .request import Broker
 
-from vocabulary import Common as c
-from vocabulary import Status as s
-from vocabulary import ThreatExchange as t
-from vocabulary import ThreatDescriptor as td
-from vocabulary import PrivacyType as pt
-from vocabulary import Connection as conn
-from errors import (
+from .vocabulary import Common as c
+from .vocabulary import Status as s
+from .vocabulary import ThreatExchange as t
+from .vocabulary import ThreatDescriptor as td
+from .vocabulary import PrivacyType as pt
+from .vocabulary import Connection as conn
+from .errors import (
     pytxAttributeError,
     pytxValueError
 )
@@ -50,7 +53,7 @@ class Common(object):
         Initialize the object. Set any attributes that were provided.
         """
 
-        for name, value in kwargs.items():
+        for name, value in list(kwargs.items()):
             self.__setattr__(name, value)
 
     def __setattr__(self, name, value):
@@ -120,7 +123,7 @@ class Common(object):
         :type attrs: dict
         """
 
-        for k, v in attrs.iteritems():
+        for k, v in attrs.items():
             self.set(k, v)
 
     def to_dict(self):
@@ -442,10 +445,10 @@ class Common(object):
                               verify=verify)
         else:
             # Avoid circular imports
-            from malware import Malware
-            from malware_family import MalwareFamily
-            from threat_indicator import ThreatIndicator
-            from threat_descriptor import ThreatDescriptor
+            from .malware import Malware
+            from .malware_family import MalwareFamily
+            from .threat_indicator import ThreatIndicator
+            from .threat_descriptor import ThreatDescriptor
             conns = {
                 conn.DESCRIPTORS: ThreatDescriptor,
                 conn.DROPPED: Malware,

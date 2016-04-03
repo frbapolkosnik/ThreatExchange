@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import argparse
 import time
 
@@ -32,14 +33,14 @@ def process_result(handle, result):
     for password in result.passwords:
         output = '%s:%s\n' % (result.indicator, password)
         if handle is None:
-            print output,
+            print(output, end=' ')
         else:
             handle.write(output)
 
 
 def run_query(options, handle):
     start = int(time.time())
-    print 'READING %s%s' % (te.URL, te.THREAT_INDICATORS)
+    print('READING %s%s' % (te.URL, te.THREAT_INDICATORS))
     results = get_results(options)
 
     count = 0

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import argparse
 import json
 import time
@@ -20,7 +21,7 @@ def process_results(handle, data):
 
 def run_query(options, handle):
     start = int(time.time())
-    print 'READING %s%s' % (te.URL, te.THREAT_INDICATORS)
+    print('READING %s%s' % (te.URL, te.THREAT_INDICATORS))
 
     # query = get_query(options)
     if not options.type and not options.text:

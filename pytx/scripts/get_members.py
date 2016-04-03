@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 from pytx import ThreatExchangeMember
 from pytx.vocabulary import ThreatExchangeMember as tem
 
@@ -7,8 +8,8 @@ from pytx.vocabulary import ThreatExchangeMember as tem
 def run():
     results = ThreatExchangeMember.objects()
     for result in results:
-        print '"%s","%s"' % (result.get(tem.NAME),
-                             result.get(tem.ID))
+        print('"%s","%s"' % (result.get(tem.NAME),
+                             result.get(tem.ID)))
 
 
 def main():

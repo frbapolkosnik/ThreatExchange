@@ -1,8 +1,10 @@
-from request import Broker
+from __future__ import absolute_import
+from builtins import object
+from .request import Broker
 
-from vocabulary import ThreatExchange as t
-from vocabulary import ThreatExchangeMember as tem
-from errors import pytxAttributeError
+from .vocabulary import ThreatExchange as t
+from .vocabulary import ThreatExchangeMember as tem
+from .errors import pytxAttributeError
 
 
 class ThreatExchangeMember(object):
@@ -34,7 +36,7 @@ class ThreatExchangeMember(object):
         were provided.
         """
 
-        for name, value in kwargs.items():
+        for name, value in list(kwargs.items()):
             self.__setattr__(name, value)
 
     def __getattr__(self, attr):
